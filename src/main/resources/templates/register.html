@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Register</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/shop}">Shop</a>
+    <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+    <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+    <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+    <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+    <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+  </nav>
+<body>
+        <form th:action="@{/user/register}" method="post" id="user-register" th:object="${userDataTransfer}" modelAtttribute="userDataTransfer">
+            <h1>Register</h1>
+            <table>
+                <tr>
+                    <td><label for="firstName">First name</label></td>
+                    <td><input type="text" name="firstName" id="firstName" placeholder="Enter first name"/></td>
+                </tr>
+                <tr>
+                    <td><label for="lastName">Last name</label></td>
+                    <td><input type="text" name="lastName" id="lastName" placeholder="Enter last name"/></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email" id="email" placeholder="Enter email"/></td>
+                </tr>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                    <td><input type="text" name="username" id="username" placeholder="Enter username"/></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" name="password" id="password" placeholder="Enter password"/></td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm password</label></td>
+                    <td><input type="password" name="confirmPassword" id="confirmPassword" placeholder="Enter password again"/></td>
+                </tr>
+
+                <label for="typeId">Account Type</label>
+                <select th:field="*{typeId}" name="typeId" id="typeId">
+                    <option th:each="accountType : ${accountTypes}"
+                            th:value="${accountType.id}"
+                            th:text="${accountType.name}">
+                  </select> 
+
+            </table>
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Home</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/admin}">Admin Home</a>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+    <a th:href="@{/user/list}">Users</a>
+  </nav>
+<body>
+    <h1 style="text-align: center; align-self: center;">Hello There, admin!</h1>
+    <div class="adminBody">
+        <div class="card">
+            <h2>Categories</h2>
+            <a th:href="@{/admin/categories}">Manage Categories</a>
+        </div>
+        <div class="card">
+            <h2>Users</h2>
+            <a th:href="@{/user/list}">Manage Users</a>
+        </div>
+        <div class="card">
+            <h2>Products</h2>
+            <a th:href="@{admin/products}">Manage Products</a>
+        </div>
+        <div class="card">
+            <h2>Account Types</h2>
+            <a th:href="@{admin/accountTypes}">Manage Account Types</a>
+        </div>
+        <div class="card">
+            <h2>Orders</h2>
+            <a th:href="@{orders/list}">List Orders</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Add Product</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/admin}">Admin Home</a>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+    <a th:href="@{/user/list}">Users</a>
+</nav>
+
+<body>
+        <form method="post" th:action="@{/admin/accountTypes/add}" id="addAccType" th:object="${accountType}">
+            <h1>Add Product</h1>
+            <table>
+                <tr>
+                    <td><input th:field="*{id}" type="hidden" name="id" id="id"/></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Account Type Name</label></td>
+                    <td><input  th:field="*{name}" type="text" name="name" id="name" placeholder="Enter account type name"/></td>
+                </tr>
+            </table>
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+</body>
+</html>

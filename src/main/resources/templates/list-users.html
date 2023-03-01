@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+
+<head>
+  <title>Store | Users</title>
+</head>
+<nav>
+  <a th:href="@{/index}">Home</a>
+  <a th:href="@{/admin}">Admin Home</a>
+  <a th:href="@{/user/login}">Login</a>
+  <a th:href="@{/user/register}">Register</a>
+  <a th:href="@{/user/list}">Users</a>
+</nav>
+<body>
+  <h1>Users</h1>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Role</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="user : ${myUsers}">
+        <td th:text="${user.id}">
+        <td th:text="${user.type}">
+        <td th:text="${user.username}">
+        <td th:text="${user.email}">
+        <td th:text="${user.firstName}">
+        <td th:text="${user.lastName}">
+        <td th:text="${user.password}">
+      </tr>
+    </tbody>
+  </table>
+</body>

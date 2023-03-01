@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+
+<head>
+  <title>Store | Cart</title>
+</head>
+<nav>
+  <a th:href="@{/index}">Home</a>
+  <a th:href="@{/shop}">Shop</a>
+  <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+  <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+  <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+  <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+  <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+</nav>
+<body>
+  <container class="cartBody">
+    <h1>Cart</h1>
+    <div class="products">
+      <div class="cartCard" th:each="product : ${cart}">
+        <img src="" class="cardImg" height="100px" width="100px" th:src="@{${'/productImages/' + product.imgFileName}}" alt="">
+        <div class="cartCardContent">
+          
+          <h3 th:text="${product.productName}"></h3>
+          <div class="price">
+            <h2>$ </h2>
+            <h2 th:text="${product.price}"></h2>
+          </div>
+          <a th:href="@{cart/remove/{productId}(productId=${product.productId})}" class="deleteButton">Delete</a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="checkoutInfo">
+      <div class="cartTotal">
+        <h2>Total</h2>
+        <div class="price">
+          <h2>$ </h2>
+          <h2 th:text="${totalPrice}"></h2>
+        </div>
+      </div>
+      <div class="cartCheckout">
+        <form action="#" th:action="@{/cart/checkout}" method="post">
+          <a type="submit" th:href="@{/cart/checkout}" value="Checkout">Checkout</a>
+        </form>
+      </div>
+    </div>
+  </container>
+</body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Shop</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/shop}">Shop</a>
+    <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+    <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+    <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+    <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+    <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+  </nav>
+<body>
+    
+    <div class="shop">
+
+        <div class="categoryNav">
+            <h1>Categories</h1>
+            <a th:href="@{/shop}"><li>All</li></a>
+            <a th:href="@{/shop/category/{id}(id=${category.categoryId})}"
+               th:each="category : ${categories}">
+                <li th:text="${category.categoryName}"></li>
+            </a>
+        </div>
+        
+        <div class="shopBody">
+            <h1 style="text-align: center; align-self: center;">Shop on!</h1>
+
+            <div class="products">
+                <div class="card" th:each="product : ${products}">
+                    <div class="cardImg">
+                        <img th:src="@{${'/productImages/' + product.imgFileName}}" width="160" height="160">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 th:text="${product.productName}"></h3>
+                        <div class="price">
+                            <h2>$ </h2>
+                            <h2 th:text="${product.price}"></h2>
+                        </div>
+                        <p th:text="${product.description}">Desc</p>
+                        <a th:href="@{/shop/view/{id}(id=${product.productId})}">View Product &#10148;</a>
+                        <a th:href="@{/addToCart/{productId}(productId=${product.productId})}">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

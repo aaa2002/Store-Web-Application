@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+
+<head>
+  <title>Store | Order Placed</title>
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/shop}">Shop</a>
+    <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+    <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+    <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+    <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+    <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+</nav>
+<body>
+
+    <div class="placedOrder">
+        <h1>Order Placed</h1>
+        <p>Thank you for your order!</p>
+        <p>Order ID: </p><p th:text="${order.id}">asd</p>
+        <p>Order Date: </p><p th:text="${order.date}">asd</p>   
+        <p>Order Total: </p><p th:text="${order.total}">asd</p>
+    </div>
+</body>

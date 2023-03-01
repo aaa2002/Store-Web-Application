@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Products</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+  <a th:href="@{/index}">Home</a>
+  <a th:href="@{/admin}">Admin Home</a>
+  <a th:href="@{/user/login}">Login</a>
+  <a th:href="@{/user/register}">Register</a>
+  <a th:href="@{/user/list}">Users</a>
+  </nav>
+<body>
+    <container class="categoryBody">
+        <h1>Products</h1>
+        <a class="addButton" th:href="@{/admin/products/add}">Add Product</a>
+        <table class = "table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="product : ${products}">
+                <td th:text="${product.productId}">1</td>
+                <td th:text="${product.productName}">Test</td>
+                <td th:text="${product.price}">12</td>
+                <td th:text="${product.category.categoryName}">Test</td>
+                <td><img src="" height="100px" width="100px" th:src="@{${'/productImages/' + product.imgFileName}}" alt=""></td>
+                <td><a th:href="@{products/update/{id}(id=${product.productId})}" class="updateButton">Update</a></td>
+                <td><a th:href="@{products/remove/{id}(id=${product.productId})}" class="deleteButton">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </container>
+</body>
+</html>

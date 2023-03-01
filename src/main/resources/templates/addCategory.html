@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Add Category</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/admin}">Admin Home</a>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+    <a th:href="@{/user/list}">Users</a>
+</nav>
+
+<body>
+        <form method="post" action="/admin/categories/add" id="addCategory" th:object="${category}">
+            <h1>Add Category</h1>
+            <table>
+                <tr>
+                    <td><input th:field="*{categoryId}" type="hidden" name="categoryId" id="categoryId" placeholder="Enter category ID"/></td>
+                </tr>
+                <tr>
+                    <td><label for="categoryName">Category Name</label></td>
+                    <td><input  th:field="*{categoryName}" type="text" name="categoryName" id="categoryName" placeholder="Enter category name"/></td>
+                </tr>
+            </table>
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+</body>
+</html>

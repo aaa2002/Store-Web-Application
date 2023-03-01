@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+
+<head>
+  <title>Store | Orders</title>
+</head>
+<nav>
+  <a th:href="@{/index}">Home</a>
+  <a th:href="@{/admin}">Admin Home</a>
+  <a th:href="@{/user/login}">Login</a>
+  <a th:href="@{/user/register}">Register</a>
+  <a th:href="@{/user/list}">Users</a>
+</nav>
+<body>
+  <h1>Orders</h1>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Email</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Country</th>
+        <th>County</th>
+        <th>City</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="orders : ${myOrders}" th:if="${orders.city != null}">
+        <td th:text="${orders.id}">
+        <td th:if="${orders.theUser != null}" th:text="${orders.theUser.getId}">
+        <td th:unless="${orders.theUser != null}" th:text="null">
+        <td th:text="${orders.email}">
+        <td th:text="${orders.firstName}">
+        <td th:text="${orders.lastName}">
+        <td th:text="${orders.country}">
+        <td th:text="${orders.county}">
+        <td th:text="${orders.city}">
+        <td th:text="${orders.address}">
+      </tr>
+    </tbody>
+  </table>
+</body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Login</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/shop}">Shop</a>
+    <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+    <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+    <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+    <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+    <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+  </nav>
+<body>
+        <form action="/user/login" th:object="${login}" id="user-login" method="post">
+            <h1>Login</h1>
+            <p th:if="invalidCredentials" class="error" style="color: crimson;">Wrong username or password.</p>
+            <table>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                    <td><input type="text" name="username" id="username" placeholder="Enter username"/></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" name="password" id="password" placeholder="Enter password"/></td>
+                </tr>
+            </table>
+            <button type="submit" name="Submit">Log In</button>
+        </form>
+</body>
+</html>

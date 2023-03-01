@@ -1,0 +1,30 @@
+@import './form.scss';
+@import './variables.scss';
+@import './scrollbar.scss';
+@import './table.scss';
+@import './nav.scss';
+@import './adminHome.scss';
+@import './buttons';
+@import './categoryNav.scss';
+@import './cart';
+@import './viewProduct.scss';
+
+
+*
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: $primary;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }

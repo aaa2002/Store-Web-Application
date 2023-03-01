@@ -1,0 +1,25 @@
+@import "./variables";
+
+//Chrome, Safari, Edge, Opera
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $secondary;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $secondary;
+  }
+
+  //Firefox
+* {
+    scrollbar-color: $secondary #333;
+    scrollbar-width: thin;
+  }

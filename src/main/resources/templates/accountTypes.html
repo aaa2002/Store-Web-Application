@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Account Types</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/admin}">Admin Home</a>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+    <a th:href="@{/user/list}">Users</a>
+  </nav>
+<body>
+    <container class="categoryBody">
+        <h1>Account Types</h1>
+        <a class="addButton" th:href="@{/admin/accountTypes/add}">Add Type</a>
+        <table class = "table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="accountType : ${accountTypes}">
+                <td th:text="${accountType.id}">1</td>
+                <td th:text="${accountType.name}">Test</td>
+                <td><a th:href="@{accountTypes/update/{id}(id=${accountType.id})}" class="updateButton">Update</a></td>
+                <td><a th:href="@{accountTypes/remove/{id}(id=${accountType.id})}" class="deleteButton">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </container>
+</body>
+</html>

@@ -1,0 +1,1 @@
+- add "currency" to Product class and a table for different currencies

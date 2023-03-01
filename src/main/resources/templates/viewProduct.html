@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+
+<head>
+  <title>Store | Order Placed</title>
+</head>
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/shop}">Shop</a>
+    <a th:if="${isSeller}" th:href="@{/admin/products/add}">Sell Product</a>
+    <a th:if="${!activeUser}" th:href="@{/user/login}">Login</a>
+    <a th:if="${!activeUser}" th:href="@{/user/register}">Register</a>
+    <a th:if="${activeUser}" th:href="@{/user/logout}">Logout</a>
+    <a th:href="@{/cart}">Shopping Cart &#10148;</a>
+</nav>
+<body>
+
+    <div class="productPageBody">
+        <h1 th:text="${product.productName}">a</h1>
+        <div class="productRow">
+            <div class="productImage">
+                <img th:src="@{${'/productImages/' + product.imgFileName}}" width="300px" height="300px" src="../static/images/placeholder.png">
+            </div>
+            <div class="productInfo">
+                <p th:text="${product.description}">a</p>
+                 <p>$ </p><p th:text="${product.price}">a</p>
+                <form th:action="@{${'/addToCart/' + product.productId}}" method="post">
+                    <a th:href="@{/addToCart/{productId}(productId=${product.productId})}">Add to Cart</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Admin - Update Product</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}" href="../static/style/style.css">
+</head>
+
+<nav>
+    <a th:href="@{/index}">Home</a>
+    <a th:href="@{/admin}">Admin Home</a>
+    <a th:href="@{/user/login}">Login</a>
+    <a th:href="@{/user/register}">Register</a>
+    <a th:href="@{/user/list}">Users</a>
+</nav>
+
+<body>
+        <form method="post" th:action="@{/admin/products/add}" id="addProduct" th:object="${productDataTransfer}" enctype="multipart/form-data">
+            <h1>Update Product</h1>
+            <table>
+                <tr>
+                    <td><input th:field="*{productId}" type="hidden" name="productId" id="productId" placeholder="Enter product ID"/></td>
+                </tr>
+                <tr>
+                    <td><label for="productName">Product Name</label></td>
+                    <td><input  th:field="*{productName}" type="text" name="productName" id="productName" placeholder="Enter product name"/></td>
+                </tr>
+                <tr>
+                    <td><label for="category">Select Category</label></td>
+                    <td><select th:field="*{categoryId}" name="category" id="category">
+                        <option th:each="category : ${categories}"
+                                th:value="${category.categoryId}"
+                                th:text="${category.categoryName}">
+                      </select> 
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="price">Price</label></td>
+                    <td><input  th:field="*{price}" type="number" name="price" id="price" placeholder="Enter product price"/></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Description</label></td>
+                    <td><textarea th:field="*{description}" rows="6" name="description" id="description" placeholder="Describe your product"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="imgFileName" class="customFileLabel">Product Image</label></td>
+                    <td><input type="file" class="customFileInput" name="imgFile" accept="image/*"></td>
+                    <td><img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages' + productDataTransfer.imgFileName}}" alt=""></td>
+                    <td><input type="hidden" name="imgName" th:value="${productDataTransfer.imgFileName}"></td>
+
+                </tr>
+            </table>
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+
+        <script>
+            function readURL(input) {
+                if(input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#imgPreview').attr('src', e.target.result).width(100).height(100);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+                $('#imgFileName').change(function() {
+                    readURL(this);
+                });
+
+                $(".customFileInput").on("change", function() {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".customFileLabel").addClass("selected").html(fileName);
+                });
+
+            }
+
+            imgPreview.onchange = evt => {
+                const [file] = imgPreview.files
+                if (file) {
+                    imgPreview.src = URL.createObjectURL(file)
+                }
+            }
+        </script>
+</body>
+</html>
